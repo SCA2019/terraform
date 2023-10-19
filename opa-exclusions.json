@@ -1,0 +1,11 @@
+{
+	    "currentPipeline":
+    {
+    	"name" : "IAC-Pipeline-02"
+	},
+	"pipelineExclusions":
+	{
+    	"DenyS3PublicBuckets" : "IAC-Pipeline-01 (SR-74113), IAC-Pipeline-02 (SR-94113), IAC-Pipeline-03 (SR-54113)",
+        "MandateBillingAccountIdTag" : "IAC-Pipeline-01 (SR-79113), IAC-Pipeline-03 (SR-72113)"
+	}
+}
