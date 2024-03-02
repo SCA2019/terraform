@@ -9,7 +9,7 @@ provider "azurerm" {
 }
 
 
-resource "azurerm_kubernetes_cluster" "default" {
+resource "azurerm_kubernetes_cluster" "aks-monitoring" {
   name                = "aks-monitoring"
   location            = "East US"
   resource_group_name = ""
@@ -35,7 +35,7 @@ resource "azurerm_kubernetes_cluster" "default" {
   }
 }
 
-resource "azurerm_kubernetes_cluster" "default" {
+resource "azurerm_kubernetes_cluster" "aks-sit" {
   name                = "aks-sit"
   location            = "East US"
   resource_group_name = ""
@@ -61,7 +61,7 @@ resource "azurerm_kubernetes_cluster" "default" {
   }
 }
 
-resource "azurerm_kubernetes_cluster" "default" {
+resource "azurerm_kubernetes_cluster" "aks-uat" {
   name                = "aks-uat"
   location            = "East US"
   resource_group_name = ""
