@@ -10,16 +10,16 @@ provider "azurerm" {
 
 
 resource "azurerm_kubernetes_cluster" "default" {
-  name                = "rg_sb_eastus_45960_1_170628036528"
+  name                = "aks-monitoring"
   location            = "East US"
-  resource_group_name = "rg_sb_eastus_45960_1_170628036528"
+  resource_group_name = ""
   dns_prefix          = "${random_pet.prefix.id}-k8s"
   kubernetes_version  = "1.26.10"
 
   default_node_pool {
     name            = "default"
     node_count      = 2
-    vm_size         = "Standard_B2s"
+    vm_size         = "Standard_B2ms"
     os_disk_size_gb = 30
   }
 
@@ -34,3 +34,56 @@ resource "azurerm_kubernetes_cluster" "default" {
     environment = "Demo"
   }
 }
+
+resource "azurerm_kubernetes_cluster" "default" {
+  name                = "aks-sit"
+  location            = "East US"
+  resource_group_name = ""
+  dns_prefix          = "${random_pet.prefix.id}-k8s"
+  kubernetes_version  = "1.26.10"
+
+  default_node_pool {
+    name            = "default"
+    node_count      = 2
+    vm_size         = "Standard_B2ms"
+    os_disk_size_gb = 30
+  }
+
+  service_principal {
+    client_id     = var.appId
+    client_secret = var.password
+  }
+
+  role_based_access_control_enabled = true
+
+  tags = {
+    environment = "Demo"
+  }
+}
+
+resource "azurerm_kubernetes_cluster" "default" {
+  name                = "aks-uat"
+  location            = "East US"
+  resource_group_name = ""
+  dns_prefix          = "${random_pet.prefix.id}-k8s"
+  kubernetes_version  = "1.26.10"
+
+  default_node_pool {
+    name            = "default"
+    node_count      = 2
+    vm_size         = "Standard_B2ms"
+    os_disk_size_gb = 30
+  }
+
+  service_principal {
+    client_id     = var.appId
+    client_secret = var.password
+  }
+
+  role_based_access_control_enabled = true
+
+  tags = {
+    environment = "Demo"
+  }
+}
+
